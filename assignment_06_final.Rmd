@@ -1,0 +1,77 @@
+---
+title: "Assignment 6"
+author: "Jes Braun"
+date: "2/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+  
+```
+
+**THIS IS MY ATTEMPT AT R MARKDOWN**  
+~~I know what I am doing~~
+  
+# How I built my database
+My database is not very fancy because it is all imaginary data at this time. I used SQLite Studio to build my tables and linked them with Primary Keys. You can find that database [here](https://github.com/jesbraun/utah_lake/blob/main/plant_database.db).
+
+I couldn't figure out how to link the foreign keys, so acknowledge that gap in my database
+
+## This is what my code looked like
+
+CREATE TABLE plant_list (
+latin_name char(50),
+common_name varchar(50),
+PRIMARY KEY (common_name)
+);
+
+CREATE TABLE functional_traits (
+latin_name varchar(50),
+growth_rate numb(10),
+root_length numb(10),
+horizontal_spread numb(10),
+PRIMARY KEY (growth_rate)
+);
+
+CREATE TABLE plant_groups (
+latin_name varchar(50),
+wetland_indicator_status varchar(10),
+life_cycle varchar(50),
+dormancy_breaking_strategy varchar(50),
+PRIMARY KEY (wetland_indicator_status)
+);
+
+CREATE TABLE seed_collection (
+plant_id varchar(50),
+latin_name char(50),
+collection_site varchar(10),
+name_collector char(10),
+date_collected numb(10),
+PRIMARY KEY (collection_site)
+);
+
+CREATE TABLE seed_coating (
+plant_id varchar(50),
+coating_type varchar(10),
+latin_name char(50),
+plant_date numb(10),
+PRIMARY KEY (coating_type)
+);
+
+CREATE TABLE research_plots (
+plot_name char(50),
+plant_id varchar(50),
+longitude numb(50),
+latitude numb(50),
+PRIMARY KEY (plot_name)
+);
+  
+## This is my schema
+
+![](https://github.com/jesbraun/utah_lake/blob/main/database_schema.png?raw=true)
+  
+**bold**= primary key. Unique id for each record in that table  
+*Italics* = foreign key, a variable shared between tables
+
+
